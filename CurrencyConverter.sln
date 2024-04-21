@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyConverter", "CurrencyConverter\CurrencyConverter.csproj", "{15406E2B-3EE3-401E-B4CE-DEB18ECEAF2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterestCalculator", "InterestCalculator\InterestCalculator.csproj", "{A8C908BB-555C-4417-9F11-865EACDCB312}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,5 +24,9 @@ Global
 		{15406E2B-3EE3-401E-B4CE-DEB18ECEAF2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15406E2B-3EE3-401E-B4CE-DEB18ECEAF2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15406E2B-3EE3-401E-B4CE-DEB18ECEAF2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8C908BB-555C-4417-9F11-865EACDCB312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8C908BB-555C-4417-9F11-865EACDCB312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8C908BB-555C-4417-9F11-865EACDCB312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8C908BB-555C-4417-9F11-865EACDCB312}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
