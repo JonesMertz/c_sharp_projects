@@ -2,21 +2,65 @@
 
 class GameController
 {
-    private readonly Game game;
+    private Game game;
     private readonly GameView view;
 
-    public GameController(Game game, GameView view)
+    List<string> gameHistory = new List<string>();
+
+    public GameController(GameView view)
     {
-        this.game = game;
+        game = new AdditionGame();
         this.view = view;
     }
 
     public void StartGame()
     {
-        view.Clear();
-        game.InitializeGame();
+        while (true)
+        {
+            view.Clear();
+            runMenuLoop();
 
-        runGameLoop();
+            game.InitializeGame();
+
+            runGameLoop();
+        }
+    }
+
+    public void runMenuLoop()
+    {
+        while (true)
+        {
+            view.DisplayMenu();
+            string input = Console.ReadLine() ?? "";
+
+            input = input.ToLower();
+            switch (input)
+            {
+                case "a":
+                    game = new AdditionGame();
+                    break;
+                case "s":
+                    game = new SubtractionGame();
+                    break;
+                case "m":
+                    game = new MultiplicationGame();
+                    break;
+                case "d":
+                    game = new DivisionGame();
+                    break;
+                case "h":
+                    view.DisplayGameHistory(gameHistory);
+                    continue;
+                case "e":
+                    view.Clear();
+                    view.DisplayMessage("Thanks for playing!");
+                    Environment.Exit(0);
+                    break;
+                default:
+                    continue;
+            }
+            break;
+        }
     }
 
     public void runGameLoop()
@@ -80,6 +124,13 @@ class GameController
     public void EndGame()
     {
         game.EndGame();
+        AddGameToHistory(game);
         view.DisplayGameEndMessage(game.Score);
+    }
+
+    public void AddGameToHistory(Game game)
+    {
+
+        gameHistory.Add($"{DateTime.Now} - {game.Type} - Score: {game.Score}");
     }
 }

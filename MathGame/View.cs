@@ -60,6 +60,20 @@ class GameView
         Console.ReadKey();
     }
 
+    public void DisplayGameHistory(List<string> gameHistory)
+    {
+        Clear();
+        Console.WriteLine("Game history:");
+        Console.WriteLine(" ");
+        foreach (string gameResult in gameHistory)
+        {
+            Console.WriteLine(gameResult);
+        }
+        Console.WriteLine(" ");
+        Console.WriteLine("Press any key to return to the main menu.");
+        Console.ReadKey();
+    }
+
     public void Clear()
     {
         try { Console.Clear(); }

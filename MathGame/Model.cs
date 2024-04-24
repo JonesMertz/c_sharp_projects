@@ -3,11 +3,20 @@ abstract class Game
     public int Number1;
     public int Number2;
     public int answer;
+    public string Type { get; set; }
 
     public int Lives { get; set; }
     public int Score { get; set; }
 
     public bool InProgress { get; set; }
+
+    public Game()
+    {
+        Lives = 3;
+        Score = 0;
+        Type = "Game";
+        InProgress = false;
+    }
 
     public void InitializeGame()
     {
@@ -32,6 +41,10 @@ abstract class Game
 
 class AdditionGame : Game
 {
+    public AdditionGame()
+    {
+        Type = "Addition";
+    }
     public override void NextQuestion()
     {
         Random random = new Random();
@@ -47,6 +60,10 @@ class AdditionGame : Game
 
 class SubtractionGame : Game
 {
+    public SubtractionGame()
+    {
+        Type = "Subtraction";
+    }
     public override void NextQuestion()
     {
         Random random = new Random();
@@ -62,6 +79,10 @@ class SubtractionGame : Game
 
 class MultiplicationGame : Game
 {
+    public MultiplicationGame()
+    {
+        Type = "Multiplication";
+    }
     public override void NextQuestion()
     {
         Random random = new Random();
@@ -77,6 +98,10 @@ class MultiplicationGame : Game
 
 class DivisionGame : Game
 {
+    public DivisionGame()
+    {
+        Type = "Division";
+    }
     public override void NextQuestion()
     {
         Random random = new Random();
