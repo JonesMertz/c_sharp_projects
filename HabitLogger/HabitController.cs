@@ -49,6 +49,8 @@ class HabitController
                     Console.ReadKey();
                     break;
                 case "0":
+                    _view.Clear();
+                    _view.Message("Goodbye!");
                     Environment.Exit(0);
                     return;
                 default:
