@@ -20,10 +20,11 @@ public class DatabaseController
             System.IO.Directory.CreateDirectory("databases");
         }
         connectionString = $"Data Source=databases/{databasePath}";
-        Console.WriteLine(connectionString);
         var connection = new SqliteConnection(connectionString);
         connection.Open();
         initiateHabitTable(connection);
+        Console.WriteLine($"Initated: {connectionString} database.");
+        Console.WriteLine("");
     }
 
     void initiateHabitTable(SqliteConnection connection)
@@ -59,7 +60,7 @@ public class DatabaseController
         command.Parameters.AddWithValue("$Amount", Amount);
         command.Parameters.AddWithValue("$Unit", Unit);
         var id = command.ExecuteScalar();
-        Console.WriteLine(id);
+
         if (id == null)
         {
             throw new Exception("Failed to save habit");
@@ -145,5 +146,27 @@ public class DatabaseController
             throw new ArgumentException("Habit does not have an Id");
         }
         return DeleteHabit((int)habit.Id);
+    }
+
+    public bool UpdateHabit(Habit habit)
+    {
+        using SqliteConnection connection = new SqliteConnection(connectionString);
+        connection.Open();
+
+        var command = connection.CreateCommand();
+        command.CommandText =
+        @"
+            UPDATE Habits
+            SET Name = $Name, Description = $Description, Amount = $Amount, Unit = $Unit
+            WHERE Id = $Id;
+            ";
+        command.Parameters.AddWithValue("$Name", habit.Name);
+        command.Parameters.AddWithValue("$Description", habit.Description);
+        command.Parameters.AddWithValue("$Amount", habit.Amount);
+        command.Parameters.AddWithValue("$Unit", habit.Unit);
+        command.Parameters.AddWithValue("$Id", habit.Id);
+        command.ExecuteNonQuery();
+
+        return true;
     }
 }

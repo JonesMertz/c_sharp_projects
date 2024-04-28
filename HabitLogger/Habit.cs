@@ -8,10 +8,9 @@ public class Habit
         this.Amount = Amount;
         this.Unit = Unit;
     }
-    public string Name { get; }
-
     public int Id { get; }
-    public string Description { get; }
-    public double Amount { get; }
-    public string Unit { get; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public double Amount { get; set; }
+    public string Unit { get; set; }
 }

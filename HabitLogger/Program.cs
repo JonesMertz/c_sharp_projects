@@ -4,46 +4,8 @@ DatabaseController databaseController = new DatabaseController("habits.db");
 HabitController habitController = new HabitController(databaseController);
 View view = new View();
 
-databaseController.LoadHabits().ForEach(habit => view.Habit(habit));
+habitController.GetUserInput();
 
-while (true)
-{
-    view.Clear();
-    view.Menu();
-    string input = Console.ReadLine();
-
-    switch (input)
-    {
-        case "1":
-            databaseController.LoadHabits().ForEach(habit => view.Habit(habit));
-            Console.WriteLine("Press any key to continue");
-            Console.ReadKey();
-            break;
-        case "2":
-            object habit = view.HabitCreation();
-            //habitController.CreateHabit(habit, habit.Description, habit.Amount, habit.Unit);
-            break;
-        case "3":
-            Console.WriteLine("Enter habit name:");
-            string habitName = Console.ReadLine() ?? "";
-            Habit habitToDelete = habitController.GetHabits().Find(habit => habit.Name == habitName);
-            if (habitToDelete == null)
-            {
-                view.Message("Habit not found");
-                Console.ReadKey();
-                break;
-            }
-            int id = habitToDelete.Id;
-            habitController.DeleteHabit(id);
-            break;
-        case "E":
-            Environment.Exit(0);
-            return;
-        default:
-            Console.WriteLine("Invalid input");
-            break;
-    }
-}
 
 
 
