@@ -232,31 +232,7 @@ class CodingTracker
 
     private void DisplayReportMenus()
     {
-        List<string> menuOptions = new List<string>
-        {
-            "Daily Report",
-            "Weekly Report",
-            "Monthly Report",
-            "Yearly Report",
-            "Back",
-        };
-        var selection = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-                .Title("Select a report to view")
-                .PageSize(10)
-                .MoreChoicesText("[grey](Move up and down to reveal more options)[/]")
-                .AddChoices(menuOptions)
-        );
-        try
-        {
-            HandleReportSelection(selection);
-        }
-        catch (Exception e)
-        {
-            AnsiConsole.MarkupLine($"[red]Error: {e.Message}[/]");
-            Console.ReadKey();
-        }
+        throw new NotImplementedException();
+
+
     }
-
-
-}
