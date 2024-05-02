@@ -233,6 +233,5 @@ class CodingTracker
     private void DisplayReportMenus()
     {
         throw new NotImplementedException();
-
-
     }
+}
